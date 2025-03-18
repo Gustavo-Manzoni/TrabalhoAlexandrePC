@@ -7,7 +7,7 @@ public class SetItem : MonoBehaviour
     [SerializeField] ItemType item;
     void OnEnable()
     {
-        InventoryManager.itemToUse = item;
+        InventoryManager.type = item;
         
 
     }

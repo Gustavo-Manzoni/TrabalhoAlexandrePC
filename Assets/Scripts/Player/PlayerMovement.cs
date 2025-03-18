@@ -37,13 +37,13 @@ public class PlayerMovement : CharacterStatus
 
         if(Input.GetButtonDown("Attack"))
          {
-            if(_canAttack && InventoryManager.itemToUse == ItemType.Sword)
+            if(_canAttack && InventoryManager.type == ItemType.Sword)
             {
             Attack();
             return;
             }
 
-            InventoryManager.UseItem();
+            InventoryManager.Use();
 
          }
         if(!_canMove) return;

@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class UiItensManager : MonoBehaviour
 {
-    public List<GameObject> uiItens;
+    public  List<GameObject> uiItens;
+    public static UiItensManager instance;
     int whatItem;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this; 
+    }
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.O))
@@ -21,7 +26,7 @@ public class UiItensManager : MonoBehaviour
         }
     }
 
-      void ChangeItem(bool more)
+    void ChangeItem(bool more)
     {
        
         if(more)

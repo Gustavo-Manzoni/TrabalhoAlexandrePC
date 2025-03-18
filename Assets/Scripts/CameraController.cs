@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] Transform player;
+    
     Vector3 offset;
     void Start()
     {
