@@ -12,6 +12,8 @@ public class PlayerMovement : CharacterStatus
     PlayerAnimation _playerAnimation;
 
     [SerializeField] GameObject _attackHitbox;
+    
+    [HideInInspector]public float playerSpeed;
 
     bool _canMove;
     bool _canAttack;
@@ -22,17 +24,26 @@ public class PlayerMovement : CharacterStatus
         rb = GetComponent<Rigidbody2D>();
         _playerAnimation = GetComponent<PlayerAnimation>();
 
+        playerSpeed = Speed;
+
         _canMove = true;
         _canAttack = true;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(Input.GetButtonDown("Attack") && _canAttack)
+        if(Input.GetButtonDown("Attack"))
          {
+            if(_canAttack && InventoryManager.itemToUse == ItemType.Sword)
+            {
             Attack();
+            return;
+            }
+
+            InventoryManager.UseItem();
 
          }
         if(!_canMove) return;
@@ -44,7 +55,7 @@ public class PlayerMovement : CharacterStatus
     }
     private void FixedUpdate()
     {
-         rb.velocity = new Vector2(horizontal, vertical).normalized * Speed;
+         rb.velocity = new Vector2(horizontal, vertical).normalized * playerSpeed;
 
 
     }

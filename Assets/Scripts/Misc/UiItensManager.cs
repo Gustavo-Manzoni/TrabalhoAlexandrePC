@@ -7,28 +7,60 @@ public class UiItensManager : MonoBehaviour
     public List<GameObject> uiItens;
     int whatItem;
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
         if(Input.GetKeyDown(KeyCode.O))
         {
-            ChangeItem();
+            ChangeItem(true);
 
         }
         if(Input.GetKeyDown(KeyCode.I))
         {
-            ChangeItem();
+            ChangeItem(false);
 
         }
     }
 
-    // Update is called once per frame
-    void Update()
+      void ChangeItem(bool more)
     {
-        
-    }
-    void ChangeItem()
-    {
+       
+        if(more)
+        {
+            
+            if(whatItem < uiItens.Count - 1 )
+            {
 
+                uiItens[whatItem].SetActive(false);
+                whatItem++;
+                uiItens[whatItem].SetActive(true);
+                
+            }else
+            {
+
+                uiItens[whatItem].SetActive(false);
+                whatItem = 0;
+                uiItens[whatItem].SetActive(true);
+                
+            }
+        }else
+        {
+             if(whatItem > 0)
+            {
+                uiItens[whatItem].SetActive(false);
+                whatItem--;
+                uiItens[whatItem].SetActive(true);
+                
+            }else
+            {
+
+                uiItens[whatItem].SetActive(false);
+                whatItem = uiItens.Count - 1;
+                uiItens[whatItem].SetActive(true);
+
+            }
+
+
+        }
 
     }
 }
