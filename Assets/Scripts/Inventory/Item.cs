@@ -4,9 +4,8 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Sword,
     SpeedPotion
-
+        
 
 }
 [System.Serializable]
@@ -22,14 +21,15 @@ public class Item
         uses--;
         if(uses <= 0) 
         {
-
+            UiItensManager.instance.ChangeItem(true);
             UiItensManager.instance.uiItens.Remove(prefab);
             prefab.SetActive(false);
         }
     }
     public int Uses() 
     {
-    return  uses;
+        
+        return  uses;
     
     }
     
@@ -40,7 +40,8 @@ public class Item
         {
             UiItensManager.instance.uiItens.Add(prefab);
         }
-        prefab.SetActive(true);
+     
+        CheckItemAmount();
     }
     public bool CanUse()
     {

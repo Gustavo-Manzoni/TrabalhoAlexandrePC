@@ -17,7 +17,7 @@ public class PlayerMovement : CharacterStatus
 
     bool _canMove;
     bool _canAttack;
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -37,13 +37,16 @@ public class PlayerMovement : CharacterStatus
 
         if(Input.GetButtonDown("Attack"))
          {
-            if(_canAttack && InventoryManager.type == ItemType.Sword)
+            if (_canAttack && InventoryManager.instance.playerWithSword)
             {
-            Attack();
-            return;
+                Attack();
+                return;
             }
+            else if(!InventoryManager.instance.playerWithSword)
+            {
 
-            InventoryManager.Use();
+                InventoryManager.Use();
+            }
 
          }
         if(!_canMove) return;

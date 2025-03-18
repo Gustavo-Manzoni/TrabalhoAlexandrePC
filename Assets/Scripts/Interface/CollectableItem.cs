@@ -9,7 +9,7 @@ public class CollectableItem : MonoBehaviour, ICollectable
     Item myItem;
     [SerializeField]int amountToCollect;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         foreach(Item item in InventoryManager.instance.items) 
         {
@@ -28,5 +28,6 @@ public class CollectableItem : MonoBehaviour, ICollectable
     public void Interact()
     {
         myItem.GetItem(amountToCollect);
+        Destroy(gameObject);
     }
 }

@@ -9,23 +9,24 @@ public class InventoryManager : MonoBehaviour
     public static Dictionary<ItemType, Item> inventory = new Dictionary<ItemType, Item>();
     [SerializeField] public Item[] items;
     public static InventoryManager instance;
-
+    [HideInInspector]public bool playerWithSword;
     void Awake()
     {
+        
       instance = this;
-        type = ItemType.Sword;
+        instance.playerWithSword = true;
         foreach (ItemType itemType in System.Enum.GetValues(typeof(ItemType)))
         {
           
             ItemType type;
-            for(int i = 0; i < items.Length; i++)
+            for(int i = 0; i < instance.items.Length; i++)
             {
                
                
-                type = items[i].type;
+                type = instance.items[i].type;
                 if(type == itemType) 
                 {
-                    inventory.Add(itemType, items[i]);
+                    inventory.Add(itemType, instance.items[i]);
                     
                     
 

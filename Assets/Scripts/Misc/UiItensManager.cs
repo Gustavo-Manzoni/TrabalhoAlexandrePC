@@ -26,7 +26,7 @@ public class UiItensManager : MonoBehaviour
         }
     }
 
-    void ChangeItem(bool more)
+    public void ChangeItem(bool more)
     {
        
         if(more)
