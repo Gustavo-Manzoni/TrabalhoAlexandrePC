@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4294615051240543502}
   - component: {fileID: 4294615051240543500}
   - component: {fileID: 4294615051240543499}
+  - component: {fileID: 8727647986875477437}
+  - component: {fileID: 1906408860061909877}
   m_Layer: 0
   m_Name: PlayerAttackCollider
   m_TagString: Untagged
@@ -125,3 +127,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 0.5
+--- !u!50 &8727647986875477437
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294615051240543503}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!114 &1906408860061909877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294615051240543503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa0a5cf916e3cca4593b41309cc6df51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
