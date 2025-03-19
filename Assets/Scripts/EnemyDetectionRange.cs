@@ -17,11 +17,14 @@ public class EnemyDetectionRange : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.CompareTag("Player")) 
         {
-            if (collision.gameObject.TryGetComponent<IMovable>(out IMovable enemy))
+            
+            if (gameObject.transform.parent.TryGetComponent(out IMovable enemy))
             {
                 enemy.Move();
+                
             
             }
         
