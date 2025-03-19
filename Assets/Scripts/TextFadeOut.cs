@@ -15,7 +15,7 @@ public class TextFadeOut : MonoBehaviour
         Color color = text.color;
         color.a = 1;
         text.color = color;
-        Vector3 finalPos = transform.position + new Vector3(0.3f, 2, 0);
+        Vector3 finalPos = transform.position + new Vector3(0.3f, 1.5f, 0);
          Vector3 starterPos = transform.position;
         StartCoroutine(TextAnimation(finalPos, starterPos));
 

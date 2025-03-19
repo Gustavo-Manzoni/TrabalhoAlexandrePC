@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15.6362, y: -124.535}
-  m_SizeDelta: {x: 19.4588, y: 5.3953}
+  m_AnchoredPosition: {x: -24.1037, y: -126.59973}
+  m_SizeDelta: {x: 2.5241, y: 1.2658}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3508928967163492365
 CanvasRenderer:
@@ -94,15 +94,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.95
-  m_fontSizeBase: 0.95
+  m_fontSize: 0.68
+  m_fontSizeBase: 0.68
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: -9.29
   m_wordSpacing: 0
@@ -148,5 +148,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c03d2089817de74bbb6c9aaa5cce7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalPos: {x: 0.3, y: 2, z: 0}
   animationDuration: 0.75

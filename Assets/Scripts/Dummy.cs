@@ -4,13 +4,14 @@ using UnityEngine;
 using TMPro;
 public class Dummy : MonoBehaviour, IDamageable
 {
-    Rigidbody2D rb;
+
    DamageIndicatorPool damageIndicator;
+    Animator anim;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-
         damageIndicator = FindObjectOfType<DamageIndicatorPool>();
+        anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -34,9 +35,10 @@ public class Dummy : MonoBehaviour, IDamageable
     // }
     public void TakeDamage(float damage)
     {
+        anim.SetTrigger("GetHurt");
         GameObject obj = damageIndicator.GetFromPool();
-        Transform tr = obj.GetComponent<Transform>();
-        tr.position = transform.position - Vector3.up * 3;
+        obj.transform.position = transform.position;
+    
         obj.SetActive(true);
         obj.GetComponent<TMP_Text>().text = damage.ToString();
 
