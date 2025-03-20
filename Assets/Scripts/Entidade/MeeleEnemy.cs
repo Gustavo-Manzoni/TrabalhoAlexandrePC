@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,8 +13,13 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
     bool lookingRight;
     float life;
     Rigidbody2D rb;
+    DamageIndicatorPool damageIndicator;
+    bool canTakeDamage;
+    bool canTakeKnokback;
     void Start()
     {
+        damageIndicator = FindObjectOfType<DamageIndicatorPool>();
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -23,13 +29,29 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
         life = baseEnemy.maxLife;
 
         lookingRight = true;
+        canTakeDamage = true;
+        canTakeKnokback = true;
     }
     public void TakeDamage(float damage) 
     {
-    
+        if (!canTakeDamage) return;
+        StartCoroutine(ResetTakeDamageCd());
+        canTakeDamage = false;
+        GameObject obj = damageIndicator.GetFromPool();
+        obj.transform.position = transform.position;
+
+        obj.SetActive(true);
+        obj.GetComponent<TMP_Text>().text = damage.ToString();
+
+
     }
     public IEnumerator TakeKnockback(float knockbackDuration, float knockbackForce, Vector2 direction) 
     {
+        if (!canTakeKnokback) yield break;
+        canTakeKnokback = false;
+        StartCoroutine (ResetTakeKnockbackCd());
+        Transform realTarget = target;
+        target = null;
         float elapsed = 0;
         while(elapsed < knockbackDuration)
              {
@@ -38,10 +60,14 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
               elapsed += Time.deltaTime;
                 yield return null;
             }
+      
+        rb.velocity = Vector2.zero;
+        target = realTarget;
     }
 
     void Update()
-    { 
+    {
+       
         if(target == null) return;  
         agent.SetDestination(target.position);
         UpdateAnimator();
@@ -70,5 +96,17 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
         target = GameObject.FindGameObjectWithTag("Player").transform;
         anim.SetBool("Running", true);
     }
+    IEnumerator ResetTakeDamageCd() 
+    {
+        yield return new WaitForSeconds(0.2f);
+        canTakeDamage = true;
     
+    }
+    IEnumerator ResetTakeKnockbackCd()
+    {
+        yield return new WaitForSeconds(0.2f);
+        canTakeKnokback = true;
+
+    }
+
 }

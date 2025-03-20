@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f4a74b14d008b49bcb45dd490ef9ab, type: 3}
   m_Name: MeeleEnemu
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3.5
   damage: 4
   maxLife: 10
