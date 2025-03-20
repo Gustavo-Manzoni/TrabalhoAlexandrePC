@@ -41964,6 +41964,7 @@ GameObject:
   - component: {fileID: 844394545}
   - component: {fileID: 844394547}
   - component: {fileID: 844394549}
+  - component: {fileID: 844394550}
   m_Layer: 0
   m_Name: MeeleEnemy
   m_TagString: Untagged
@@ -42012,7 +42013,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -568565666, guid: 47c1db6e2b2b70e4889d4ca94c23fee2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -42074,6 +42075,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseEnemy: {fileID: 11400000, guid: f91fbba1686217a4c832ed8e9d6a018e, type: 2}
+--- !u!95 &844394550
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844394544}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3ef75eb9883e0a841bcaf7793f16e244, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &974020672
 GameObject:
   m_ObjectHideFlags: 0
