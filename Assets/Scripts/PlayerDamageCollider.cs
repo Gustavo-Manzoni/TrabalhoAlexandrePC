@@ -17,7 +17,7 @@ public class PlayerDamageCollider : MonoBehaviour
          if(collision.gameObject.TryGetComponent(out IKnockbackable targetToKnockback) && collision.gameObject.tag != "Player")
         {
             Vector2 direction = (Vector2)FindObjectOfType<PlayerMovement>().gameObject.transform.position - (Vector2)collision.gameObject.transform.position;
-            InventoryManager.instance.StartCoroutine(targetToKnockback.TakeKnockback(0.25f, 10, -direction.normalized));
+            InventoryManager.instance.StartCoroutine(targetToKnockback.TakeKnockback(0.25f, 19, -direction.normalized));
           //Professor você pode julgar meus metodos mas não meus resultados kkkkkk
           //eu so passei a responsabilidade de chamar a
           //corroutina para uma instancia que eu ja criei para não precisar

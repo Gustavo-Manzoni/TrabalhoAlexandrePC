@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,13 +8,20 @@ using UnityEngine.AI;
 public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
 {
     [SerializeField] BaseEnemy baseEnemy;
-    Transform target;
-    NavMeshAgent agent;
-    Animator anim;
-    bool lookingRight;
-    float life;
-    Rigidbody2D rb;
+    [SerializeField] GameObject hurtParticleSystem;
+    [SerializeField] GameObject dieParticleSystem;
+
     DamageIndicatorPool damageIndicator;
+
+    NavMeshAgent agent;
+    Rigidbody2D rb;
+    Transform target;
+    Animator anim;
+    SpriteRenderer spriteRenderer;
+
+    float life;
+
+    bool lookingRight;
     bool canTakeDamage;
     bool canTakeKnokback;
     void Start()
@@ -22,12 +30,15 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = baseEnemy.speed;
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        life = baseEnemy.maxLife;
 
+
+        life = baseEnemy.maxLife;
+        
         lookingRight = true;
         canTakeDamage = true;
         canTakeKnokback = true;
@@ -35,13 +46,26 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
     public void TakeDamage(float damage) 
     {
         if (!canTakeDamage) return;
+        StartCoroutine(ChangeColorWhenHit());
         StartCoroutine(ResetTakeDamageCd());
-        canTakeDamage = false;
+
+       
         GameObject obj = damageIndicator.GetFromPool();
         obj.transform.position = transform.position;
-
         obj.SetActive(true);
         obj.GetComponent<TMP_Text>().text = damage.ToString();
+
+        Instantiate(hurtParticleSystem, transform.position, Quaternion.identity);
+
+        life -= damage;
+
+        if(life <= 0) 
+        {
+            Destroy(gameObject);
+            Instantiate(dieParticleSystem, transform.position, Quaternion.identity);
+
+        }
+
 
 
     }
@@ -98,14 +122,23 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
     }
     IEnumerator ResetTakeDamageCd() 
     {
+        canTakeDamage = false;
         yield return new WaitForSeconds(0.2f);
         canTakeDamage = true;
     
     }
     IEnumerator ResetTakeKnockbackCd()
     {
+        canTakeKnokback = false;
         yield return new WaitForSeconds(0.2f);
         canTakeKnokback = true;
+
+    }
+    IEnumerator ChangeColorWhenHit()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = Color.white;
 
     }
 
