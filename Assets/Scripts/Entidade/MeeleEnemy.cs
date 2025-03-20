@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MeeleEnemy : MonoBehaviour, IMovable
+public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
 {
     [SerializeField] BaseEnemy baseEnemy;
     Transform target;
@@ -11,8 +11,10 @@ public class MeeleEnemy : MonoBehaviour, IMovable
     Animator anim;
     bool lookingRight;
     float life;
+    Rigidbody2D rb;
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = baseEnemy.speed;
@@ -22,8 +24,22 @@ public class MeeleEnemy : MonoBehaviour, IMovable
 
         lookingRight = true;
     }
-
+    public void TakeDamage(float damage) 
+    {
     
+    }
+    public IEnumerator TakeKnockback(float knockbackDuration, float knockbackForce, Vector2 direction) 
+    {
+        float elapsed = 0;
+        while(elapsed < knockbackDuration)
+             {
+
+               rb.AddForce(direction * knockbackForce);
+              elapsed += Time.deltaTime;
+                yield return null;
+            }
+    }
+
     void Update()
     { 
         if(target == null) return;  
@@ -54,4 +70,5 @@ public class MeeleEnemy : MonoBehaviour, IMovable
         target = GameObject.FindGameObjectWithTag("Player").transform;
         anim.SetBool("Running", true);
     }
+    
 }

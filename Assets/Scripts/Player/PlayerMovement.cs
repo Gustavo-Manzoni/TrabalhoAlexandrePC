@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovement : CharacterStatus
+public class PlayerMovement : CharacterStatus, IDamageable
 {
     [HideInInspector]public float horizontal, vertical;
     [SerializeField] float _cooldownToAttack;
@@ -82,6 +82,10 @@ public class PlayerMovement : CharacterStatus
         _canMove = true;
         _canAttack = true;
         
+    }
+    public void TakeDamage(float damage)
+    {
+        print("aa");
     }
 
 }
