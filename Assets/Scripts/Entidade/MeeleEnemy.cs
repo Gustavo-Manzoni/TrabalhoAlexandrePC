@@ -23,7 +23,7 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
 
     bool lookingRight;
     bool canTakeDamage;
-    bool canTakeKnokback;
+    bool canTakeKnockback;
     void Start()
     {
         damageIndicator = FindObjectOfType<DamageIndicatorPool>();
@@ -41,7 +41,7 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
         
         lookingRight = true;
         canTakeDamage = true;
-        canTakeKnokback = true;
+        canTakeKnockback = true;
     }
     public void TakeDamage(float damage) 
     {
@@ -71,15 +71,18 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
     }
     public IEnumerator TakeKnockback(float knockbackDuration, float knockbackForce, Vector2 direction) 
     {
-        if (!canTakeKnokback) yield break;
-        canTakeKnokback = false;
-        StartCoroutine (ResetTakeKnockbackCd());
+        if (rb == null) yield break;
+        if (!canTakeKnockback) yield break;
+        canTakeKnockback = false;
+
+        StartCoroutine(ResetTakeKnockbackCd());
+
         Transform realTarget = target;
         target = null;
         float elapsed = 0;
         while(elapsed < knockbackDuration)
              {
-
+            
                rb.AddForce(direction * knockbackForce);
               elapsed += Time.deltaTime;
                 yield return null;
@@ -129,9 +132,9 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
     }
     IEnumerator ResetTakeKnockbackCd()
     {
-        canTakeKnokback = false;
+        canTakeKnockback = false;
         yield return new WaitForSeconds(0.2f);
-        canTakeKnokback = true;
+        canTakeKnockback = true;
 
     }
     IEnumerator ChangeColorWhenHit()

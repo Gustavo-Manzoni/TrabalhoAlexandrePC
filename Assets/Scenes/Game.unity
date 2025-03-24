@@ -41633,7 +41633,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597548984}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -42097,6 +42097,7 @@ GameObject:
   - component: {fileID: 844394550}
   - component: {fileID: 844394551}
   - component: {fileID: 844394552}
+  - component: {fileID: 844394553}
   m_Layer: 0
   m_Name: MeeleEnemy
   m_TagString: Untagged
@@ -42263,7 +42264,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009692743, y: -0.14054716}
+  m_Offset: {x: -0.0096927285, y: -0.12158966}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -42274,8 +42275,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8051852, y: 1.3189056}
+  m_Size: {x: 0.8051852, y: 1.2809906}
   m_EdgeRadius: 0
+--- !u!114 &844394553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844394544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88117dd37a62d0c4182dd64820ce6673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &974020672
 GameObject:
   m_ObjectHideFlags: 0
@@ -52512,6 +52525,7 @@ MonoBehaviour:
   _cooldownToAttack: 0.5
   rb: {fileID: 0}
   _attackHitbox: {fileID: 4294615051240543503, guid: 2275379db7e26ed4c86c778e2b034289, type: 3}
+  _hurtParticleEffect: {fileID: 2746399398764517751, guid: 9441c11547cb2d74c81b3396cd709190, type: 3}
   playerSpeed: 0
 --- !u!50 &1814878767
 Rigidbody2D:
@@ -52628,7 +52642,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.059375852, y: -0.059375763}
+  m_Offset: {x: 0.014785141, y: -0.29960456}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -52639,7 +52653,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.89685374, y: 1.3718596}
+  m_Size: {x: 0.9339343, y: 0.89140195}
   m_EdgeRadius: 0
 --- !u!1 &1900021402
 GameObject:
