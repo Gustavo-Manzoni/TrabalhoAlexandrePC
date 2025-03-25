@@ -73,7 +73,7 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
     {
         _playerAnimation.AttackAnimation();
         Instantiate(_attackHitbox, transform.position +
-         _playerAnimation.GetLastDirections() * 1.3f, transform.rotation);
+         new Vector3(_playerAnimation.anim.GetInteger("Horizontal"), _playerAnimation.anim.GetInteger("Vertical")) * 1.3f, transform.rotation);
         StartCoroutine(ResetAttackCooldown());
         
     }   
@@ -107,6 +107,12 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
       
         rb.velocity = Vector2.zero;
        
+    }
+    public Vector3 GetHorVer()
+    {
+
+        return new Vector3(horizontal,vertical);
+
     }
     #region Coroutines
     IEnumerator ResetAttackCooldown()

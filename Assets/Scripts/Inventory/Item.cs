@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public enum ItemType
@@ -37,12 +38,14 @@ public class Item
     public void GetItem(int amount)
     {
         uses += amount;
+
         CheckToAdd();
      
         CheckItemAmount();
     }
     public void CheckToAdd() 
     {
+        
         if (!UiItensManager.instance.uiItens.Contains(prefab))
         {
             UiItensManager.instance.uiItens.Add(prefab);
@@ -64,7 +67,10 @@ public class Item
     }
     public void CheckItemAmount()
     {
+
+        if(amount.transform.parent.gameObject.activeSelf)
         amount.CheckItems();
+        
     }
 
 }

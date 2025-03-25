@@ -16,6 +16,7 @@ public class CollectableItem : MonoBehaviour, ICollectable
             if (item.type == type)
             {
                 myItem = item;
+            
                 return;
             
             }

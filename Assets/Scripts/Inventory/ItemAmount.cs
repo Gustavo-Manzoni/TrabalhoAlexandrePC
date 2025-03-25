@@ -19,8 +19,9 @@ public class ItemAmount : MonoBehaviour
     }
     public void CheckItems() 
     {
-
-        text.text = InventoryManager.inventory[type].Uses().ToString() + "x";
+            
+            text.text = InventoryManager.inventory[type].Uses().ToString() + "x";
+          
 
     }
 
