@@ -35,15 +35,13 @@ public class InventoryManager : MonoBehaviour
             
             }
 
-
-
-
         }
-
     }
     public static void Use()
     {
+        if (!inventory[type].CanUse()) return;
         
+
         switch (type)
         {
            case ItemType.SpeedPotion:
@@ -53,8 +51,15 @@ public class InventoryManager : MonoBehaviour
                 
 
            break;
+            case ItemType.Bow:
 
-          
+                PlayerInteractionsManager.instance.Bow();
+
+
+
+                break;
+
+
 
 
 

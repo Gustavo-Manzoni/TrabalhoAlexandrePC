@@ -72,8 +72,8 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
     void Attack()
     {
         _playerAnimation.AttackAnimation();
-        Instantiate(_attackHitbox, transform.position + 
-            new Vector3(_playerAnimation.anim.GetFloat("LastHorizontal"), _playerAnimation.anim.GetFloat("LastVertical")) * 1.3f, transform.rotation);
+        Instantiate(_attackHitbox, transform.position +
+         _playerAnimation.GetLastDirections() * 1.3f, transform.rotation);
         StartCoroutine(ResetAttackCooldown());
         
     }   

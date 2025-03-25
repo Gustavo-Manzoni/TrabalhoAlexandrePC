@@ -4,8 +4,9 @@ using UnityEngine;
 
 public enum ItemType
 {
-    SpeedPotion
-        
+    SpeedPotion,
+    Bow
+
 
 }
 [System.Serializable]
@@ -36,12 +37,17 @@ public class Item
     public void GetItem(int amount)
     {
         uses += amount;
+        CheckToAdd();
+     
+        CheckItemAmount();
+    }
+    public void CheckToAdd() 
+    {
         if (!UiItensManager.instance.uiItens.Contains(prefab))
         {
             UiItensManager.instance.uiItens.Add(prefab);
         }
-     
-        CheckItemAmount();
+
     }
     public bool CanUse()
     {

@@ -43,4 +43,10 @@ public class PlayerAnimation : MonoBehaviour
         anim.SetTrigger("Attack");
 
     }
+    public Vector3 GetLastDirections() 
+    {
+    
+        return new Vector3(anim.GetFloat("LastHorizontal"), anim.GetFloat("LastVertical"));
+
+    }
 }
