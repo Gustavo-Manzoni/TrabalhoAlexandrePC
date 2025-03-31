@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 public class Dummy : MonoBehaviour, IDamageable
 {
 
    DamageIndicatorPool damageIndicator;
     Animator anim;
+    UnityEvent WhenDestroy;
+
     void Start()
     {
         damageIndicator = FindObjectOfType<DamageIndicatorPool>();
@@ -42,5 +45,10 @@ public class Dummy : MonoBehaviour, IDamageable
         obj.SetActive(true);
         obj.GetComponent<TMP_Text>().text = damage.ToString();
 
+    }
+    void OnDestroy() 
+    {
+        WhenDestroy?.Invoke();
+    
     }
 }
