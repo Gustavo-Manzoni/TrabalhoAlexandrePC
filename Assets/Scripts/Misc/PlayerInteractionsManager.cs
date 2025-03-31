@@ -14,8 +14,7 @@ public class PlayerInteractionsManager : MonoBehaviour
     [SerializeField] GameObject arrow;
     [SerializeField] GameObject shootArrowParticle;
     [SerializeField] float arrowSpeed;
-    [SerializeField] float cooldownForEachArrowShoot;
-    bool canShoot = true;
+  
 
 
     
@@ -40,7 +39,7 @@ public class PlayerInteractionsManager : MonoBehaviour
    }
     public void Bow() 
     {
-        if (!canShoot) return;
+       
 
         if (playerMovement.GetHorVer().magnitude > 0.2f)
         {
@@ -60,14 +59,8 @@ public class PlayerInteractionsManager : MonoBehaviour
             float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
             arrowInstance.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
-        StartCoroutine(ResetBowCooldown());
+
         
     }
-    IEnumerator ResetBowCooldown()
-    {
-        canShoot = false;
-        yield return new WaitForSeconds(cooldownForEachArrowShoot);
-        canShoot = true;
-
-    }
+   
 }

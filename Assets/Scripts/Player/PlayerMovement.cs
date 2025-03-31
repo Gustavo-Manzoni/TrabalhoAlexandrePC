@@ -10,7 +10,7 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
     [SerializeField] float _cooldownToAttack;
 
     [HideInInspector]public Rigidbody2D rb;
-    SpriteRenderer spriteRenderer;
+    SpriteRenderer _spriteRenderer;
     PlayerAnimation _playerAnimation;
 
     [SerializeField] GameObject _attackHitbox;
@@ -21,21 +21,22 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
 
     bool _canMove;
     bool _canAttack;
-    bool canTakeKnockback;
-   
+    bool _canTakeKnockback;
+    bool _canTakeDamage;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerAnimation = GetComponent<PlayerAnimation>();
 
         playerSpeed = Speed;
 
         _canMove = true;
         _canAttack = true;
-        canTakeKnockback = true;
-        
+        _canTakeKnockback = true;
+        _canTakeDamage = true;
     }
 
     // Update is called once per frame
@@ -73,21 +74,23 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
     {
         _playerAnimation.AttackAnimation();
         Instantiate(_attackHitbox, transform.position +
-         new Vector3(_playerAnimation.anim.GetInteger("Horizontal"), _playerAnimation.anim.GetInteger("Vertical")) * 1.3f, transform.rotation);
+         new Vector3(_playerAnimation.anim.GetInteger("Horizontal"), 
+         _playerAnimation.anim.GetInteger("Vertical")) * 1.3f, transform.rotation);
         StartCoroutine(ResetAttackCooldown());
         
     }   
     public void TakeDamage(float damage)
     {
-        print("aa");
+        if(!_canTakeDamage) return;
+        StartCoroutine(ResetTakeDamageCd());
         StartCoroutine(ChangeColorWhenHit());
         Instantiate(_hurtParticleEffect, transform.position, transform.rotation);
     }
     public IEnumerator TakeKnockback(float knockbackDuration, float knockbackForce, Vector2 direction)
     {
         if (rb == null) yield break;
-        if (!canTakeKnockback) yield break;
-        canTakeKnockback = false;
+        if (!_canTakeKnockback) yield break;
+        _canTakeKnockback = false;
         _canMove = false;
        
 
@@ -130,16 +133,23 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
     }
     IEnumerator ResetTakeKnockbackCd()
     {
-        canTakeKnockback = false;
+        _canTakeKnockback = false;
         yield return new WaitForSeconds(0.2f);
-        canTakeKnockback = true;
+        _canTakeKnockback = true;
+
+    }
+    IEnumerator ResetTakeDamageCd()
+    {
+        _canTakeDamage = false;
+        yield return new WaitForSeconds(0.2f);
+        _canTakeDamage = true;
 
     }
     IEnumerator ChangeColorWhenHit()
     {
-        spriteRenderer.color = Color.red;
+        _spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.2f);
-        spriteRenderer.color = Color.white;
+        _spriteRenderer.color = Color.white;
 
     }
     #endregion

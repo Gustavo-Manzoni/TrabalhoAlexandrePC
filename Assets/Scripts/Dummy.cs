@@ -9,7 +9,10 @@ public class Dummy : MonoBehaviour, IDamageable
    DamageIndicatorPool damageIndicator;
     Animator anim;
     UnityEvent WhenDestroy;
-
+    [SerializeField]int life  = 20;
+    [SerializeField] GameObject tileToDestroy;
+    [SerializeField] GameObject tileDestroyParticle;
+    [SerializeField] GameObject particleInstancePoint;
     void Start()
     {
         damageIndicator = FindObjectOfType<DamageIndicatorPool>();
@@ -39,6 +42,15 @@ public class Dummy : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         anim.SetTrigger("GetHurt");
+        life -= (int)damage;
+        if(life <= 0)
+        {
+            Instantiate(tileDestroyParticle, particleInstancePoint.transform.position, Quaternion.identity);
+            Destroy(tileToDestroy, 1.3f);
+            Destroy(gameObject);
+              
+        
+        }
         GameObject obj = damageIndicator.GetFromPool();
         obj.transform.position = transform.position;
     
