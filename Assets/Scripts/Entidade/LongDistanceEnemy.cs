@@ -2,32 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
 
 public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMovable
 {
-    public GameObject arrowPrefab;
-    public Transform arrowSpawn;
     Transform player;
     Animator animator;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
 
+    [SerializeField] GameObject particleEffectWhenDie;
+    public GameObject arrowPrefab;
+    public Transform arrowSpawn;
+
     [SerializeField]BaseEnemy baseEnemy;
+    DamageIndicatorPool damageIndicator;
+
+    float life;
     float speed;
+
     [SerializeField] float fleeDistance = 2f;
     [SerializeField] float stopDistance = 6f;
-    [SerializeField] float attackRange = 8f;
     [SerializeField] float arrowSpeed = 5f;
     [SerializeField] float shootCooldown = 2f;
-    DamageIndicatorPool damageIndicator;
+
     bool canShoot;
     bool canMove;
-    float life;
-    [SerializeField] GameObject particleEffectWhenDie;
     void Start()
     {
-
         life = baseEnemy.maxLife;
         speed = baseEnemy.speed;
 
@@ -36,13 +39,15 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
-        damageIndicator = FindObjectOfType<DamageIndicatorPool>();  
+        damageIndicator = FindObjectOfType<DamageIndicatorPool>();
 
-     
+        canShoot = true;
+
+        arrowSpawn = transform;
     }
     public void Move() 
     {
-    canMove = true;
+         canMove = true;
     }
 
     void Update()
@@ -70,18 +75,21 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
     void HandleMovement()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
+        
         if (distanceToPlayer <= fleeDistance)
         {
             FleeFromPlayer();
+            
         }
         else if (distanceToPlayer <= stopDistance)
         {
             StopAndAttack();
+           
         }
         else
         {
             MoveTowardsPlayer();
+           
         }
     }
 
@@ -100,6 +108,7 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
         if (canShoot)
         {
             StartCoroutine(ShootArrow());
+          
         }
     }
 
@@ -119,7 +128,7 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
         GameObject arrow = Instantiate(arrowPrefab, arrowSpawn.position, Quaternion.identity);
         Vector2 direction = (player.position - transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        arrow.transform.rotation = Quaternion.Euler(0, 0, angle + 41);
+        arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
         Rigidbody2D arrowRb = arrow.GetComponent<Rigidbody2D>();
         arrowRb.velocity = direction * arrowSpeed;
 
