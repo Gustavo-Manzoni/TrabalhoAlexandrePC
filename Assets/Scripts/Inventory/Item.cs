@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
+
 using UnityEngine;
 
 public enum ItemType
 {
     SpeedPotion,
-    Bow
+    Bow,
+    LifePotion
 
 
 }

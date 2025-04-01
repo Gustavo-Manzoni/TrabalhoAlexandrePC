@@ -6,7 +6,7 @@ public abstract class CharacterStatus : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float lifeMax;
-    float life;
+    protected float life;
     public float LifeMax { get => lifeMax; }
     public float Speed { get => speed; }
 
@@ -14,11 +14,5 @@ public abstract class CharacterStatus : MonoBehaviour
     void Awake()
     {
         life = lifeMax;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

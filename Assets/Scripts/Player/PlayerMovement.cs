@@ -85,6 +85,15 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
         StartCoroutine(ResetTakeDamageCd());
         StartCoroutine(ChangeColorWhenHit());
         Instantiate(_hurtParticleEffect, transform.position, transform.rotation);
+        life -= 1;
+        GameManager.instance.LessHeart();
+
+        if(life <= 0) 
+        {   
+        
+        
+        }
+        
     }
     public IEnumerator TakeKnockback(float knockbackDuration, float knockbackForce, Vector2 direction)
     {

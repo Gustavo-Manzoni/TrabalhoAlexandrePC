@@ -37,6 +37,11 @@ public class PlayerInteractionsManager : MonoBehaviour
         
       
    }
+    public void LifePotion() 
+    {
+        GameManager.instance.AddHeart();
+    
+    }
     public void Bow() 
     {
        

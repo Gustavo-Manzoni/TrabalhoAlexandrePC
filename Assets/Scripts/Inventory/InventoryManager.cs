@@ -58,6 +58,13 @@ public class InventoryManager : MonoBehaviour
 
 
                 break;
+            case ItemType.LifePotion:
+
+                PlayerInteractionsManager.instance.LifePotion();
+
+
+
+                break;
 
 
 
