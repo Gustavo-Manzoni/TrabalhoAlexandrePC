@@ -38,6 +38,7 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
 
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent <SpriteRenderer>();
 
         damageIndicator = FindObjectOfType<DamageIndicatorPool>();
 
@@ -65,8 +66,9 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
     {
    
         spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         spriteRenderer.color = Color.white;
+
 
 
     }
@@ -126,10 +128,12 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
         yield return new WaitForSeconds(0.5f);
 
         GameObject arrow = Instantiate(arrowPrefab, arrowSpawn.position, Quaternion.identity);
+        Rigidbody2D arrowRb = arrow.GetComponent<Rigidbody2D>();
+
         Vector2 direction = (player.position - transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
         arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
-        Rigidbody2D arrowRb = arrow.GetComponent<Rigidbody2D>();
         arrowRb.velocity = direction * arrowSpeed;
 
         yield return new WaitForSeconds(shootCooldown);
@@ -147,11 +151,14 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
     }
     public void TakeDamage(float damage) 
     {
+        life -= damage;
         StartCoroutine(ChangeColor());
+        
+
         if (life <= 0)
         {
             Instantiate(particleEffectWhenDie, transform.position, Quaternion.identity);
-
+            Destroy(gameObject);
         }
     }
     public IEnumerator TakeKnockback(float knockbackDuration, float knockbackForce, Vector2 direction)
