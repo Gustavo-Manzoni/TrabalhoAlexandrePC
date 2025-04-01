@@ -7,7 +7,6 @@ public class PlayerArrowCollider : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-
         if (collision.gameObject.TryGetComponent(out IDamageable target) && collision.gameObject.tag != "Player")
         {
             target.TakeDamage(4);
@@ -19,9 +18,9 @@ public class PlayerArrowCollider : MonoBehaviour
             Vector2 direction = (Vector2)transform.position - (Vector2)collision.gameObject.transform.position;
             InventoryManager.instance.StartCoroutine(targetToKnockback.TakeKnockback(0.25f, 19, -direction.normalized));
             Destroy(gameObject);
-            //Professor você pode julgar meus metodos mas não meus resultados kkkkkk
+            //Professor vocï¿½ pode julgar meus metodos mas nï¿½o meus resultados kkkkkk
             //eu so passei a responsabilidade de chamar a
-            //corroutina para uma instancia que eu ja criei para não precisar
+            //corroutina para uma instancia que eu ja criei para nï¿½o precisar
             //criar uma nova e considerando que o invcentario sempre vai existir
 
 

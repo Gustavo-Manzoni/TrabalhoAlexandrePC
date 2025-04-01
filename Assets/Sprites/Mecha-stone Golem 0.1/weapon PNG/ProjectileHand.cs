@@ -21,9 +21,17 @@ public class ProjectileHand : MonoBehaviour
     void Update()
     {
         if (target == null) return;
-        agent.SetDestination(target.position);
-       Vector3 direction = target.position - transform.position;
 
+        agent.SetDestination(target.position);
+      
+        Vector3 direction = target.position - transform.position;
+        direction.z = 0; 
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+           transform.rotation  = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0, angle), Time.deltaTime * 5);
+            
+        
+        
       
 
     }
