@@ -11,6 +11,11 @@ public class BossEnergyBall : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
     }
+     void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+
+    }
     IEnumerator GameJuiceSize() 
     {
         float elapsed = 0;
@@ -28,7 +33,7 @@ public class BossEnergyBall : MonoBehaviour
     }
     public void Move(float speed)
     {
-        rb.velocity = -     (transform.parent.position - transform.position).normalized * speed ;
+        rb.velocity = -(transform.parent.position - transform.position).normalized * speed ;
 
 
     }

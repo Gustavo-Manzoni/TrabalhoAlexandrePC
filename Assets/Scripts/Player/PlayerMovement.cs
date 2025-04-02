@@ -94,7 +94,7 @@ if(_bossBattle )return;
         life -= damage;
         for(int i = 0; i < damage; i ++)
         {
-                GameManager.Instance.LessHeart();
+                GameManager.instance.LessHeart();
             
         }
 

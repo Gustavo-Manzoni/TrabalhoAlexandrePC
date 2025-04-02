@@ -16,6 +16,11 @@ public class BossSpirtalProjectileAttack : MonoBehaviour
 
 
     }
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+
+    }
     IEnumerator GameJuiceSize() 
     {
         float elapsed = 0;

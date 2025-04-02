@@ -49,7 +49,7 @@ public class Boss : MonoBehaviour, IDamageable
     IEnumerator StartAttacking() 
     {
         yield return new WaitForSeconds(timeToAttack);
-        StartCoroutine(ProjectileHandAttack());
+        StartCoroutine(OrbitAttack());
     
     
     }
