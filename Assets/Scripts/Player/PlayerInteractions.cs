@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
-    ICollectable itemToInteract;
-    
+    ICollectable itemToCollect;
+    IInteractable itemToInteract;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class PlayerInteractions : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) 
         {
             itemToInteract?.Interact();
-            
+            itemToCollect?.Interact();
            
         
         
@@ -29,15 +30,30 @@ public class PlayerInteractions : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent<ICollectable>( out ICollectable item)) 
         {
-            itemToInteract = item;
+            itemToCollect = item;
+
+
+
+        }
+        if (collision.gameObject.TryGetComponent<IInteractable>(out IInteractable itemInt))
+        {
+            itemToInteract = itemInt;
 
 
 
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<ICollectable>(out ICollectable item))
+        {
+            itemToCollect = null;
+
+
+
+        }
+        if (collision.gameObject.TryGetComponent<IInteractable>(out IInteractable itemInt))
         {
             itemToInteract = null;
 
