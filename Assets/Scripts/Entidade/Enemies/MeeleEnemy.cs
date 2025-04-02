@@ -121,6 +121,7 @@ public class MeeleEnemy : MonoBehaviour, IMovable, IDamageable, IKnockbackable
     public void Move()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        if(anim != null)
         anim.SetBool("Running", true);
     }
     IEnumerator ResetTakeDamageCd() 

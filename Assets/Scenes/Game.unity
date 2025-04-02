@@ -2463,7 +2463,7 @@ RectTransform:
   - {fileID: 2088427880}
   - {fileID: 2079787821}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9062,6 +9062,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7158183, y: 0.75248694}
   m_EdgeRadius: 0
+--- !u!1 &1063588030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1063588031}
+  m_Layer: 0
+  m_Name: MinionsInstancePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1063588031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063588030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.935, y: -0.661, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1276505724}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1065027320
 GameObject:
   m_ObjectHideFlags: 0
@@ -11982,6 +12013,7 @@ GameObject:
   - component: {fileID: 1276505723}
   - component: {fileID: 1276505725}
   - component: {fileID: 1276505726}
+  - component: {fileID: 1276505727}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -12052,7 +12084,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 110, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1063588031}
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12089,11 +12122,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToAttack: 3
+  _canTakeDamage: 0
   timeToInstantiateArm: 0.8
   ArmProjectile: {fileID: 3138197615542600163, guid: 8c67c7c69f9d76d4892dd958622ae184, type: 3}
   orbitBalls: {fileID: 2300740290246098905, guid: 56c15d8a2c7b5a5459ca82daa72b7f0d, type: 3}
   timeToStartOrbitAttack: 1
-  timeToLeaveOrbitAttack: 1
+  timeToLeaveOrbitAttack: 2.5
+  orbitAttackAmount: 9
+  timeForEachOrbit: 0.2
+  minionPrefab: {fileID: 2527201208953690787, guid: 47bb36c7e7c840a45884d3df253c6ae6, type: 3}
+  instancePosition: {fileID: 1063588031}
+  minionAmount: 3
+  delayForEachMinion: 0.45
+  maxLife: 10
+  espiralOrbitPrefab: {fileID: 6314284039854481874, guid: 9ae63abcd0cd4d647921501cb1eef566, type: 3}
+--- !u!70 &1276505727
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276505722}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.011544943, y: 0.055150352}
+  m_Size: {x: 0.6650151, y: 1.3326315}
+  m_Direction: 0
 --- !u!1 &1276569287
 GameObject:
   m_ObjectHideFlags: 0
@@ -12178,7 +12236,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1276569290
 BoxCollider2D:
@@ -15913,7 +15971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 12.7417, y: 142.02956}
+  m_AnchoredPosition: {x: 12.66, y: 141.98}
   m_SizeDelta: {x: 287.2953, y: 345.3996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1814878763
@@ -15993,6 +16051,7 @@ MonoBehaviour:
   _attackHitbox: {fileID: 4294615051240543503, guid: 2275379db7e26ed4c86c778e2b034289, type: 3}
   _hurtParticleEffect: {fileID: 2746399398764517751, guid: 9441c11547cb2d74c81b3396cd709190, type: 3}
   playerSpeed: 0
+  _bossBattle: 1
 --- !u!50 &1814878767
 Rigidbody2D:
   serializedVersion: 4
@@ -17032,7 +17091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1895012253
 Transform:
   m_ObjectHideFlags: 0
@@ -19156,7 +19215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2168251013992162518, guid: a2ebd9f72a156e2498b0b324c3bd705f, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2168251013992162518, guid: a2ebd9f72a156e2498b0b324c3bd705f, type: 3}
       propertyPath: m_LocalPosition.x

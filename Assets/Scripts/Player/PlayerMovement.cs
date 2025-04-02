@@ -23,6 +23,7 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
     bool _canAttack;
     bool _canTakeKnockback;
     bool _canTakeDamage;
+    [SerializeField]bool _bossBattle;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,14 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
     void Update()
     {
 
+    if(_canMove) {
+
+         horizontal = Input.GetAxisRaw("Horizontal");
+         vertical = Input.GetAxisRaw("Vertical");
+        }
+
+
+if(_bossBattle )return;
         if(Input.GetButtonDown("Attack"))
          {
             if (_canAttack && InventoryManager.instance.playerWithSword)
@@ -57,10 +66,7 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
             }
 
          }
-        if(!_canMove) return;
-
-         horizontal = Input.GetAxisRaw("Horizontal");
-         vertical = Input.GetAxisRaw("Vertical");
+        
          
         
     }

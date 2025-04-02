@@ -9,6 +9,16 @@ public class BossEnergyFireOrbit : MonoBehaviour
    bool _canRotate;
     IEnumerator Start()
     {
+    
+    for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+            GameObject childObj = child.gameObject;
+
+            
+            childObj.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+        }
         _canRotate = true;
         yield return new WaitForSeconds(Random.Range(1f,3f));
         _canRotate = false;
@@ -19,7 +29,7 @@ public class BossEnergyFireOrbit : MonoBehaviour
             {
                 energyBall.Move(ballsSpeed);
 
-
+                yield return new WaitForSeconds(0.2f);
             }
             
            
