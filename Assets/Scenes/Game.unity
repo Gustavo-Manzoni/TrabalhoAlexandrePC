@@ -901,6 +901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &54356360
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1771,6 +1772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &132192038
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2307,6 +2309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &174174085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2813,6 +2816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &285020308
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3228,6 +3232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &316761809
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4426,6 +4431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &483666899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4498,6 +4504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &485691997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4570,6 +4577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &492527292
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5229,6 +5237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &554565510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7166,6 +7175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &834262220
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7400,6 +7410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!1 &845600917
 GameObject:
   m_ObjectHideFlags: 0
@@ -7446,6 +7457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &845600920
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7822,6 +7834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &890293600
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8206,6 +8219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &954307620
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8413,6 +8427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &972228870
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9036,6 +9051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1039493583
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9506,6 +9522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1091902909
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9860,6 +9877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1105871777
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10299,6 +10317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1128743846
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10371,6 +10390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1136790732
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11653,6 +11673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 1
 --- !u!61 &1240029165
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11975,6 +11996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1245921330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12324,6 +12346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1279964636
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12718,6 +12741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1299012289
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12928,6 +12952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1318015361
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13180,6 +13205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1344395831
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13341,6 +13367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1364564674
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13413,6 +13440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1367259013
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13993,6 +14021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1474441686
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14501,6 +14530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1561819978
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14677,6 +14707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1622981801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14923,6 +14954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1653967189
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15401,6 +15433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!1 &1690663519
 GameObject:
   m_ObjectHideFlags: 0
@@ -15447,6 +15480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1690663522
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16919,6 +16953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1883804951
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17379,6 +17414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &1911048469
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18111,6 +18147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &2016366460
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19176,6 +19213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyable: 0
+  damage: 0
 --- !u!61 &2141935757
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemiesDamage : MonoBehaviour
 {
     [SerializeField] bool isDestroyable;
+    [SerializeField] int damage;
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -10,7 +11,7 @@ public class EnemiesDamage : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out IDamageablePlayer target)) 
         {
 
-            target.TakeDamage(4);
+            target.TakeDamage(damage);
             if (isDestroyable) 
             {
                 Destroy(gameObject);

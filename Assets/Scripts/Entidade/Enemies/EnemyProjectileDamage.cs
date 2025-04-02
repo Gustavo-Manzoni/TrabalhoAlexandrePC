@@ -13,7 +13,7 @@ public class EnemyProjectileDamage : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out IDamageablePlayer target))
         {
 
-            target.TakeDamage(4);
+            target.TakeDamage(1);
             Instantiate(hitParticle, collision.transform.position, Quaternion.identity);
             if (isDestroyable)
             {

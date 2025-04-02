@@ -91,8 +91,12 @@ if(_bossBattle )return;
         StartCoroutine(ResetTakeDamageCd());
         StartCoroutine(ChangeColorWhenHit());
         Instantiate(_hurtParticleEffect, transform.position, transform.rotation);
-        life -= 1;
-        GameManager.instance.LessHeart();
+        life -= damage;
+        for(int i = 0; i < damage; i ++)
+        {
+                GameManager.Instance.LessHeart();
+            
+        }
 
         if(life <= 0) 
         {   

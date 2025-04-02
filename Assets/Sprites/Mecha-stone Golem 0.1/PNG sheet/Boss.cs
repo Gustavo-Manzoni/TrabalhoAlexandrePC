@@ -46,15 +46,10 @@ public class Boss : MonoBehaviour, IDamageable
         StartCoroutine(StartAttacking());
         
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     IEnumerator StartAttacking() 
     {
         yield return new WaitForSeconds(timeToAttack);
-        StartCoroutine(EspiralOrbitAttack());
+        StartCoroutine(ProjectileHandAttack());
     
     
     }
