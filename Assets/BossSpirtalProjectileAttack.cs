@@ -9,18 +9,15 @@ public class BossSpirtalProjectileAttack : MonoBehaviour
     [SerializeField] float projectileSpeed;
     IEnumerator Start()
     {
+        Destroy(gameObject, 7);
         StartCoroutine(GameJuiceSize());
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(Attack());
-
+        
 
 
     }
-    void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-
-    }
+   
     IEnumerator GameJuiceSize() 
     {
         float elapsed = 0;

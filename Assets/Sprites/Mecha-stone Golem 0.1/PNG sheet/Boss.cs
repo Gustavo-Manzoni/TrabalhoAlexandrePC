@@ -1,7 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum BossAttacks
+{
+    ProjectileHand,
+    MinionsInstance,
+    NormalOrbit,
+    SpiralOrbit
+}
 public class Boss : MonoBehaviour, IDamageable
 {
     [SerializeField]float timeToAttack;
@@ -27,11 +34,11 @@ public class Boss : MonoBehaviour, IDamageable
 
     [Header("Espiral Orbit Attack")]
     [SerializeField] GameObject espiralOrbitPrefab;
+    float waitDuration;
 
 
 
-
-
+    List<GameObject> attackObjects = new List<GameObject>();
     Animator anim;
     SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
@@ -49,15 +56,52 @@ public class Boss : MonoBehaviour, IDamageable
     IEnumerator StartAttacking() 
     {
         yield return new WaitForSeconds(timeToAttack);
-        StartCoroutine(OrbitAttack());
-    
-    
+       
+        Array valores = Enum.GetValues(typeof(BossAttacks));
+        System.Random random = new System.Random();
+       BossAttacks attackType = (BossAttacks)valores.GetValue(random.Next(valores.Length));
+        switch (attackType)
+        {       
+            case BossAttacks.ProjectileHand:
+                StartCoroutine(ProjectileHandAttack());
+                yield return new WaitForSeconds(timeToInstantiateArm);
+                yield return new WaitForSeconds(0.5f);
+                break;
+            case BossAttacks.MinionsInstance:
+                StartCoroutine(MinionsAttack());
+                for (int i = 0; i < minionAmount; i++)
+                {
+                    yield return new WaitForSeconds(delayForEachMinion + 0.1f);
+                }
+                break;
+            case BossAttacks.NormalOrbit:
+                StartCoroutine(OrbitAttack());
+
+              
+                yield return new WaitForSeconds(timeToStartOrbitAttack);
+                for (int i = 0; i < orbitAttackAmount; i++)
+                {yield return new WaitForSeconds(timeForEachOrbit);}
+                yield return new WaitForSeconds(timeToLeaveOrbitAttack);
+                yield return new WaitForSeconds(timeToStartOrbitAttack);
+                break;
+            case BossAttacks.SpiralOrbit:
+                StartCoroutine(EspiralOrbitAttack());
+                print(waitDuration);
+                yield return new WaitForSeconds (waitDuration);
+                break;
+        
+        }
+        anim.Play("Idle");
+        StartCoroutine(StartAttacking());   
     }
     IEnumerator ProjectileHandAttack() 
     {
         anim.Play("ProjectileHandAttack");
         yield return new WaitForSeconds(timeToInstantiateArm);
-        Instantiate(ArmProjectile, transform.position, Quaternion.identity);
+        GameObject attackPrefabInstance = Instantiate(ArmProjectile, transform.position, Quaternion.identity);
+        attackObjects.Add(attackPrefabInstance);    
+        yield return new WaitForSeconds(0.5f);
+        anim.Play("Idle");
         
     }
      IEnumerator MinionsAttack() 
@@ -68,7 +112,8 @@ public class Boss : MonoBehaviour, IDamageable
         {
              yield return new WaitForSeconds(delayForEachMinion + 0.1f);
            GameObject minionInstance = Instantiate(minionPrefab, instancePosition.position, Quaternion.identity);
-           minionInstance.GetComponent<IMovable>().Move();
+            attackObjects.Add(minionInstance);
+            minionInstance.GetComponent<IMovable>().Move();
            anim.Play("MinionInstanceAttack");
           
         } anim.Play("Idle");
@@ -84,15 +129,16 @@ public class Boss : MonoBehaviour, IDamageable
         _canTakeDamage = false;
         for(int i = 0; i < orbitAttackAmount ; i++)
         {
-           Instantiate(orbitBalls, transform.position, Quaternion.identity);
+           GameObject orbitInstance = Instantiate(orbitBalls, transform.position, Quaternion.identity);
+            attackObjects.Add(orbitInstance);
             yield return new WaitForSeconds(timeForEachOrbit);
         }
             
-yield return new WaitForSeconds(timeToLeaveOrbitAttack);
+            yield return new WaitForSeconds(timeToLeaveOrbitAttack);
            anim.Play("OrbitAttackLeave");
            yield return new WaitForSeconds(timeToStartOrbitAttack);
              _canTakeDamage = true;
-           anim.Play("Idle");
+      
         
     }
     IEnumerator EspiralOrbitAttack() 
@@ -100,10 +146,12 @@ yield return new WaitForSeconds(timeToLeaveOrbitAttack);
         anim.Play("EspiralAttack");
        GameObject espiralOrbitInstance = Instantiate(espiralOrbitPrefab, transform.position, transform.rotation);
         float duration = espiralOrbitInstance.GetComponent<BossSpiralOrbitAttack>().attackDuration;
-    yield return new WaitForSeconds(duration);
+        waitDuration = duration;
+        attackObjects.Add(espiralOrbitInstance);
+        yield return new WaitForSeconds(duration);
     Destroy(espiralOrbitInstance);
 
-           anim.Play("Idle");
+       
         
     }
     public void TakeDamage(float damage)
@@ -116,7 +164,11 @@ yield return new WaitForSeconds(timeToLeaveOrbitAttack);
             StopAllCoroutines();
             anim.Play("Death");
             spriteRenderer.color = Color.white;
-
+            for (int i = 0; i < attackObjects.Count; i++)
+            {
+                if (attackObjects[i] != null)
+                Destroy(attackObjects[i]);
+            }
         }
 
     }

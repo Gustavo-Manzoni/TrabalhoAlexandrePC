@@ -9,13 +9,9 @@ public class BossEnergyBall : MonoBehaviour
     {
         StartCoroutine(GameJuiceSize());
         rb = GetComponent<Rigidbody2D>();
-
+        Destroy(gameObject, 7);
     }
-     void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-
-    }
+    
     IEnumerator GameJuiceSize() 
     {
         float elapsed = 0;
