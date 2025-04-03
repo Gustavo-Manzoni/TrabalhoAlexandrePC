@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3501070885209354828}
   - component: {fileID: 3501070885209354829}
   - component: {fileID: 3501070885209354826}
+  - component: {fileID: 6736291780981726888}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5471698, g: 0.25669748, b: 0, a: 1}
+  m_Sprite: {fileID: -1577755454, guid: 70239eb6eeee19c4192443b403a1c229, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,3 +127,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   amountToCollect: 3
+--- !u!50 &6736291780981726888
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501070885209354827}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

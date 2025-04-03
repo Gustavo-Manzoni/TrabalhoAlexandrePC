@@ -22,7 +22,7 @@ public class Item
         uses--;
         if(uses <= 0) 
         {
-            UiItensManager.instance.ChangeItem(true);
+            UiItensManager.instance.ChangeItem(false);
             UiItensManager.instance.uiItens.Remove(prefab);
             prefab.SetActive(false);
         }

@@ -10,6 +10,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] public Item[] items;
     public static InventoryManager instance;
     [HideInInspector]public bool playerWithSword;
+    public GameObject[] ItemsPrefab;
     void Awake()
     {
         

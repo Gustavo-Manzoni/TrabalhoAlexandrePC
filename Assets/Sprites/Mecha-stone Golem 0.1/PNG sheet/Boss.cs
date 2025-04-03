@@ -35,7 +35,7 @@ public class Boss : MonoBehaviour, IDamageable
     [Header("Espiral Orbit Attack")]
     [SerializeField] GameObject espiralOrbitPrefab;
     float waitDuration;
-
+    
 
 
     List<GameObject> attackObjects = new List<GameObject>();

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
-    ICollectable itemToCollect;
-    IInteractable itemToInteract;
-
+   
+    List<ICollectable> itemsToCollect = new List<ICollectable>();
+    List<IInteractable> itemsToInteract = new List<IInteractable>();
+    [SerializeField] GameObject interactionPrompt;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +20,19 @@ public class PlayerInteractions : MonoBehaviour
        
         if (Input.GetKeyDown(KeyCode.E)) 
         {
-            itemToInteract?.Interact();
-            itemToCollect?.Interact();
+            if (itemsToInteract.Count > 0)
+            {
+                itemsToInteract[0].Interact();
+
+
+            }
+            if (itemsToCollect.Count > 0) 
+            {
+                itemsToCollect[0].Interact();
+              
+            
+            }
+            
            
         
         
@@ -30,15 +42,16 @@ public class PlayerInteractions : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent<ICollectable>( out ICollectable item)) 
         {
-            itemToCollect = item;
-
+           
+            itemsToCollect.Add(item);
+            interactionPrompt.SetActive(true);
 
 
         }
         if (collision.gameObject.TryGetComponent<IInteractable>(out IInteractable itemInt))
         {
-            itemToInteract = itemInt;
-
+            itemsToInteract.Add(itemInt);
+            interactionPrompt.SetActive(true);
 
 
         }
@@ -48,15 +61,22 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<ICollectable>(out ICollectable item))
         {
-            itemToCollect = null;
+            itemsToCollect.Remove(item);
+            if (itemsToCollect.Count <= 0)
+            {
+                interactionPrompt.SetActive(false);
 
-
+            }
 
         }
         if (collision.gameObject.TryGetComponent<IInteractable>(out IInteractable itemInt))
         {
-            itemToInteract = null;
+            itemsToInteract.Remove(itemInt);
+            if (itemsToCollect.Count <= 0)
+            {
+                interactionPrompt.SetActive(false);
 
+            }
 
 
         }

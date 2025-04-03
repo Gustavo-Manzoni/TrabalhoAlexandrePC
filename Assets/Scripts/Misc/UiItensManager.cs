@@ -14,6 +14,7 @@ public class UiItensManager : MonoBehaviour
     }
     void Update()
     {
+        
         if(Input.GetKeyDown(KeyCode.O))
         {
             ChangeItem(true);
