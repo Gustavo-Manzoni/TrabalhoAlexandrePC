@@ -15,6 +15,7 @@ public class InventoryManager : MonoBehaviour
     {
         
       instance = this;
+        inventory = new Dictionary<ItemType, Item>();
         instance.playerWithSword = true;
         foreach (ItemType itemType in System.Enum.GetValues(typeof(ItemType)))
         {

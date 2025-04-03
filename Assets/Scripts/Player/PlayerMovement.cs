@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -12,11 +13,13 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
     [HideInInspector]public Rigidbody2D rb;
     SpriteRenderer _spriteRenderer;
     PlayerAnimation _playerAnimation;
+    
 
     [SerializeField] GameObject _attackHitbox;
     [SerializeField] GameObject _hurtParticleEffect;
 
     [HideInInspector]public float playerSpeed;
+    [HideInInspector]public float life;
     
 
     bool _canMove;
@@ -31,7 +34,7 @@ public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackable
         rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerAnimation = GetComponent<PlayerAnimation>();
-
+        life = base.LifeMax;
         playerSpeed = Speed;
 
         _canMove = true;
@@ -80,8 +83,8 @@ if(_bossBattle )return;
     {
         _playerAnimation.AttackAnimation();
         Instantiate(_attackHitbox, transform.position +
-         new Vector3(_playerAnimation.anim.GetInteger("Horizontal"), 
-         _playerAnimation.anim.GetInteger("Vertical")) * 1.3f, transform.rotation);
+         new Vector3(_playerAnimation.anim.GetFloat("LastHorizontal"), 
+         _playerAnimation.anim.GetFloat("LastVertical")) * 1.3f, transform.rotation);
         StartCoroutine(ResetAttackCooldown());
         
     }   
@@ -99,8 +102,8 @@ if(_bossBattle )return;
         }
 
         if(life <= 0) 
-        {   
-        
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
         }
         

@@ -6,13 +6,11 @@ public abstract class CharacterStatus : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float lifeMax;
-    protected float life;
     public float LifeMax { get => lifeMax; }
     public float Speed { get => speed; }
 
     // Start is called before the first frame update
     void Awake()
     {
-        life = lifeMax;
     }
 }

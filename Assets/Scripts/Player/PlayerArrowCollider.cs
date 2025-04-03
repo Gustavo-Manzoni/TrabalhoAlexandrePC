@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class PlayerArrowCollider : MonoBehaviour
 {
+    [SerializeField] AudioClip start;
+    [SerializeField] GameObject hitSoundObj;
+    AudioSource audioSource;
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(start);
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.TryGetComponent(out IDamageable target) && collision.gameObject.tag != "Player")
         {
             target.TakeDamage(4);
+            Instantiate(hitSoundObj, transform.position, Quaternion.identity);
             Destroy(gameObject);
-
+            
+            
         }
         if (collision.gameObject.TryGetComponent(out IKnockbackable targetToKnockback) && collision.gameObject.tag != "Player")
         {

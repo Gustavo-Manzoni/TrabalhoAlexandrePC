@@ -40,6 +40,7 @@ public class PlayerInteractionsManager : MonoBehaviour
     public void LifePotion() 
     {
         GameManager.instance.AddHeart();
+        playerMovement.life++;
     
     }
     public void Bow() 

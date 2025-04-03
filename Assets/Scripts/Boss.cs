@@ -41,11 +41,16 @@ public class Boss : MonoBehaviour, IDamageable
     List<GameObject> attackObjects = new List<GameObject>();
     Animator anim;
     SpriteRenderer spriteRenderer;
+    [SerializeField] AudioClip hit;
+    AudioSource audioSource;
+    [SerializeField] GameObject winMessage;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
+
         _canTakeDamage = true;
 
         life = maxLife;
@@ -86,7 +91,7 @@ public class Boss : MonoBehaviour, IDamageable
                 break;
             case BossAttacks.SpiralOrbit:
                 StartCoroutine(EspiralOrbitAttack());
-                print(waitDuration);
+              
                 yield return new WaitForSeconds (waitDuration);
                 break;
         
@@ -159,10 +164,13 @@ public class Boss : MonoBehaviour, IDamageable
         if(!_canTakeDamage) return;
         StartCoroutine(ChangeColorWhenHit());
         life--;
+
         if(life <= 0)
         {
+            GetComponent<CapsuleCollider2D>().enabled = false;
             StopAllCoroutines();
             anim.Play("Death");
+            winMessage.SetActive(true);
             spriteRenderer.color = Color.white;
             for (int i = 0; i < attackObjects.Count; i++)
             {

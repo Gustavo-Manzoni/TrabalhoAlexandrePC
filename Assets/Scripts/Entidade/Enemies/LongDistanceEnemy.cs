@@ -29,6 +29,7 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
 
     bool canShoot;
     bool canMove;
+    bool lookingRight;
     void Start()
     {
         life = baseEnemy.maxLife;
@@ -43,6 +44,7 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
         damageIndicator = FindObjectOfType<DamageIndicatorPool>();
 
         canShoot = true;
+        lookingRight = true;
 
         arrowSpawn = transform;
     }
@@ -51,7 +53,7 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
          canMove = true;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (canMove)
         {
@@ -148,6 +150,16 @@ public class LongDistanceEnemy : MonoBehaviour, IDamageable, IKnockbackable, IMo
         animator.SetFloat("Horizontal", horizontal);
         animator.SetFloat("Vertical", vertical);
         animator.SetBool("Running", horizontal != 0 || vertical != 0);
+        if (lookingRight && horizontal < 0 || !lookingRight && horizontal > 0)
+        {
+            lookingRight = !lookingRight;
+            Vector2 newScale = (Vector2)transform.localScale;
+            newScale.x *= -1;
+            transform.localScale = newScale;
+
+
+
+        }
     }
     public void TakeDamage(float damage) 
     {

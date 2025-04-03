@@ -85,7 +85,7 @@ public class GolemMinionEnemy : MonoBehaviour, IMovable, IDamageable, IKnockback
         target = realTarget;
     }
 
-    void Update()
+    void FixedUpdate()
     {
 
         if (target == null) return;
