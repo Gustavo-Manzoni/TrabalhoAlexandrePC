@@ -6468,7 +6468,7 @@ MonoBehaviour:
     prefab: {fileID: 1208727237}
     amount: {fileID: 456193351}
   - type: 1
-    uses: 1111
+    uses: 0
     prefab: {fileID: 1358103775}
     amount: {fileID: 1841534577}
   - type: 2
