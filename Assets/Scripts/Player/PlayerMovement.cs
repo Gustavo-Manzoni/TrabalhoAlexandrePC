@@ -7,6 +7,12 @@ using static UnityEngine.GraphicsBuffer;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : CharacterStatus, IDamageablePlayer, IKnockbackablePlayer
 {
+    /*
+    Professor eu vou escrever tudo aqui mesmo, o meu planejamento era ter feito um jogo maior
+     mas acabou que mesmo trabalhando em casa saiu isso mesmo e ficou bem ruinzinho, mas eu fiz o melhor que pude
+    eu nao consegui fazer o uso otimizado de varios recursos por causa do tempo
+     eu queria usar uma maquina de estado para fazer o boss mas acabou que nao deu tempo
+    */
     [HideInInspector]public float horizontal, vertical;
     [SerializeField] float _cooldownToAttack;
 

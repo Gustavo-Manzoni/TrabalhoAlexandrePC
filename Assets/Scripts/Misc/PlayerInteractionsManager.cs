@@ -32,7 +32,7 @@ public class PlayerInteractionsManager : MonoBehaviour
        
            playerMovement.playerSpeed += 2.3f;
             yield return new WaitForSeconds(speedPotionDuration);
-            playerMovement.playerSpeed = playerMovement.Speed;
+            playerMovement.playerSpeed -= 2.3f;
 
         
       
